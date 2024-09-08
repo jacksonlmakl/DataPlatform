@@ -7,7 +7,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name='dream_platform_client',
-    version='0.1',
+    version='0.9',
     packages=find_packages(),
     install_requires=[
         'requests',
