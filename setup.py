@@ -6,14 +6,14 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
-    name='DataPlatform',
+    name='dataPlatformClient',
     version='0.1',
     packages=find_packages(),
     install_requires=[
         'requests',
         'pandas',
     ],
-    author='Your Name',
+    author='Jackson Makl',
     author_email='jlm487@georgetown.edu',
     description='A Python client to interact with the DataPlatform API.',
     long_description=long_description,
