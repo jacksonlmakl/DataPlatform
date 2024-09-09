@@ -6,6 +6,8 @@ class Connect:
         self.email = email
         self.password = password
 
+        self.settings=self.settings()
+        
     def table(self,db,schema,tbl):
         # Define the API endpoint and query parameters
         url = 'http://54.166.184.183:5555/get_table'
@@ -69,11 +71,11 @@ class Connect:
         else:
             return response
             print(f"Error: {response.status_code}, {response.text}")
-    def settings(self,email,password):
+    def settings(self):
         url = 'http://54.166.184.183:5555/get_settings'
         params = {
-            'email': email,
-            'password': password
+            'email': self.email,
+            'password': self.password
         }
         # Make the GET request
         response = requests.get(url, params=params)
@@ -91,7 +93,6 @@ class Connect:
         if 'SECRETS' in list(account_settings.keys()):
             account_settings['SECRETS']=json.loads(account_settings.get('SECRETS'))
             
-        self.user_settings=user_settings
-        self.account_settings=account_settings
+        self.settings={'user_settings':user_settings,'account_settings':account_settings}
         return {'user_settings':user_settings,'account_settings':account_settings}
 
