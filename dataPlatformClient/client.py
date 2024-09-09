@@ -6,7 +6,7 @@ class Connect:
         self.email = email
         self.password = password
 
-        self.settings=self.settings()
+        self.settings=self.get_settings()
         
     def table(self,db,schema,tbl):
         # Define the API endpoint and query parameters
@@ -71,7 +71,7 @@ class Connect:
         else:
             return response
             print(f"Error: {response.status_code}, {response.text}")
-    def settings(self):
+    def get_settings(self):
         url = 'http://54.166.184.183:5555/get_settings'
         params = {
             'email': self.email,
