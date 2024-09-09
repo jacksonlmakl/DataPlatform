@@ -69,3 +69,29 @@ class Connect:
         else:
             return response
             print(f"Error: {response.status_code}, {response.text}")
+    def settings(self,email,password):
+        url = 'http://54.166.184.183:5555/get_settings'
+        params = {
+            'email': email,
+            'password': password
+        }
+        # Make the GET request
+        response = requests.get(url, params=params)
+        
+        
+        data=response.json()
+        
+        account_settings = data.get('account_settings',[{}])[0]
+        
+        user_settings = data.get('user_settings',[{}])[0]
+        
+        account_settings['POLICIES']=json.loads(account_settings.get('POLICIES'))
+        account_settings['USERS']=json.loads(account_settings.get('USERS'))
+        
+        if 'SECRETS' in list(account_settings.keys()):
+            account_settings['SECRETS']=json.loads(account_settings.get('SECRETS'))
+            
+        self.user_settings=user_settings
+        self.account_settings=account_settings
+        return {'user_settings':user_settings,'account_settings':account_settings}
+
