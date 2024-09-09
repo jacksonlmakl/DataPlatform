@@ -7,7 +7,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name='dataPlatformClient',
-    version='0.9',
+    version='1.0',
     packages=find_packages(),
     install_requires=[
         'requests',
