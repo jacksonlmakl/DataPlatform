@@ -6,7 +6,7 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
-    name='dream_platform_client',
+    name='dataPlatformClient',
     version='0.9',
     packages=find_packages(),
     install_requires=[
