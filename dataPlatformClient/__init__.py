@@ -1,4 +1,4 @@
 # __init__.py
-from .client import Connect
+from .client import Connect, New
 
-__all__ = ['Connect']
+__all__ = ['Connect','New']
