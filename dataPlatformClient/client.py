@@ -1,9 +1,6 @@
 import requests
 import pandas as pd
 import json
-
-
-
 class Connect:
     def __init__(self,email, password):
         self.email = email
@@ -95,6 +92,9 @@ class Connect:
         
         if 'SECRETS' in list(account_settings.keys()):
             account_settings['SECRETS']=json.loads(account_settings.get('SECRETS'))
+            
+        self.settings={'user_settings':user_settings,'account_settings':account_settings}
+        return {'user_settings':user_settings,'account_settings':account_settings}
 
 
 
@@ -124,4 +124,3 @@ class New:
             
         self.settings={'user_settings':user_settings,'account_settings':account_settings}
         return {'user_settings':user_settings,'account_settings':account_settings}
-
