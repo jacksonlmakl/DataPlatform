@@ -8,7 +8,7 @@ class Connect:
 
         self.settings=self.get_settings()
         
-    def table(self,db,schema,tbl):
+    def table(self,db,schema,tbl,page=1):
         # Define the API endpoint and query parameters
         url = 'http://54.166.184.183:5555/get_table'
         params = {
@@ -17,7 +17,7 @@ class Connect:
             'db': db,
             'schema': schema,
             'tbl': tbl,
-            'page': 1
+            'page': page
         }
         
         # Make the GET request
@@ -95,7 +95,29 @@ class Connect:
             
         self.settings={'user_settings':user_settings,'account_settings':account_settings}
         return {'user_settings':user_settings,'account_settings':account_settings}
-
+        
+    def query(self,query,page=1):
+        # Define the API endpoint and query parameters
+        url = 'http://54.166.184.183:5555/get_table'
+        params = {
+            'email': self.email,
+            'password': self.password,
+            'query': query,
+            'page': page
+        }
+        
+        # Make the GET request
+        response = requests.get(url, params=params)
+        # Check if the request was successful
+        if response.status_code == 200:
+            # Parse the JSON response
+            data = response.json()
+            return pd.DataFrame(data['data'])
+            print("Data:", data['data'])
+            print("Pagination Info:", data['pagination'])
+        else:
+            return response
+            print(f"Error: {response.status_code}, {response.text}")
 
 
 
