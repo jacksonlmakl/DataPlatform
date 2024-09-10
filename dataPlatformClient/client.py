@@ -98,7 +98,7 @@ class Connect:
         
     def query(self,query,page=1):
         # Define the API endpoint and query parameters
-        url = 'http://54.166.184.183:5555/get_table'
+        url = 'http://54.166.184.183:5555/query'
         params = {
             'email': self.email,
             'password': self.password,
